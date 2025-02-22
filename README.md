@@ -38,7 +38,9 @@
         <p>&copy; 2025 VHL.TRADE.com. Tous droits réservés.</p>
     </footer>
 </body>
-</html><!DOCTYPE html>
+</html>
+
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -75,7 +77,9 @@
         <p>&copy; 2025 VHL.TRADE.com. Tous droits réservés.</p>
     </footer>
 </body>
-</html><!DOCTYPE html>
+</html>
+
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -116,7 +120,10 @@
         <p>&copy; 2025 VHL.TRADE.com. Tous droits réservés.</p>
     </footer>
 </body>
-</html>body {
+</html>
+
+<style>
+body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     color: #333;
@@ -142,137 +149,4 @@ nav ul {
 
 nav ul li {
     display: inline;
-    margin: 0 10px;
-}
-
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
-}
-
-main {
-    padding: 20px;
-}
-
-.products {
-    display: flex;
-    justify-content: space-around;
-}
-
-.product {
-    background-color: #fff;
-    border: 1px solid #ccc;
-    padding: 10px;
-    text-align: center;
-}
-
-.product img {
-    max-width: 100%;
-    height: auto;
-}
-
-footer {
-    background-color: #111;
-    color: #fff;
-    text-align: center;
-    padding: 10px 0;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-}
-
-form {
-    background-color: #fff;
-    border: 1px solid #ccc;
-    padding: 20px;
-    max-width: 400px;
-    margin: 20px auto;
-}
-
-form label {
-    display: block;
-    margin: 10px 0 5px;
-}
-
-form input[type="text"],
-form input[type="email"],
-form input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    margin: 5px 0 10px;
-    border: 1px solid #ccc;
-}
-
-form button {
-    background-color: #111;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-}
-
-form .captcha {
-    text-align: center;
-    margin: 20px 0;
-}<?php
-session_start();
-
-$captcha_code = '';
-$characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-$characters_length = strlen($characters);
-$captcha_length = 6;
-
-for ($i = 0; $i < $captcha_length; $i++) {
-    $captcha_code .= $characters[rand(0, $characters_length - 1)];
-}
-
-$_SESSION['captcha_code'] = $captcha_code;
-
-$image = imagecreatetruecolor(150, 50);
-$background_color = imagecolorallocate($image, 255, 255, 255);
-$text_color = imagecolorallocate($image, 0, 0, 0);
-
-imagefilledrectangle($image, 0, 0, 150, 50, $background_color);
-imagettftext($image, 20, 0, 15, 30, $text_color, 'font.ttf', $captcha_code);
-
-header('Content-Type: image/png');
-imagepng($image);
-imagedestroy($image);
-?><?php
-session_start();
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-    $captcha = $_POST['captcha'];
-
-    if ($captcha == $_SESSION['captcha_code']) {
-        // Vérifier les informations de connexion dans la base de données
-        // Si les informations sont correctes, rediriger vers une page protégée
-        echo 'Connexion réussie';
-    } else {
-        echo 'CAPTCHA incorrect';
-    }
-}
-?><?php
-session_start();
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $username = $_POST['username'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $confirm_password = $_POST['confirm_password'];
-    $captcha = $_POST['captcha'];
-
-    if ($captcha == $_SESSION['captcha_code']) {
-        if ($password == $confirm_password) {
-            // Enregistrer l'utilisateur dans la base de données
-            echo 'Inscription réussie';
-        } else {
-            echo 'Les mots de passe ne correspondent pas';
-        }
-    } else {
-        echo 'CAPTCHA incorrect';
-    }
-}
-?>
+    margin 
